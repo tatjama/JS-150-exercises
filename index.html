@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>150 JavaScript exercise</title>
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+    <section>
+        <h1>Exercise 1.</h1>
+        <!--1.  Write a JavaScript program to display the current day and time in the following format.  Go to the editor
+Sample Output : Today is : Tuesday.
+Current time is : 10 PM : 30 : 38-->
+<button onclick="showDateTime()"> Show Day and Time</button>
+<div class = "root1"></div>    
+        <script type="text/javascript">
+            function showDateTime() {
+                document.querySelector(".root1").innerHTML =' <p>Today is : <span class = "day"></span></p> <p>Curent time is:<span class =  "time"></span></p>'
+            
+                let d = new Date();
+                let localTime = d.toLocaleTimeString().padStart(11,0);
+                let hours = localTime.slice(0,2); 
+                let minutes = localTime.slice(3,5);
+                let seconds = localTime.slice(6,8);
+                let period = localTime.slice(9,11)
+
+                let time = " " + hours + " " + period + " : " + minutes + " : " + seconds;
+
+                let day = [ "Monday","Tuesday","Wensday","Thursday","Fiday","Saterday","Sunday"]  ;
+
+                document.querySelector(".time").innerHTML = time
+                document.querySelector(".day").innerHTML = day[d.getDay() - 1]
+            }        
+        </script>
+    </section>
+    <section>
+        <h1>Exercise 2.</h1>
+        <!--2. Write a JavaScript program to print the contents of the current window.  Go to the editor
+-->        
+        <button onclick="printWindow()">Print window</button>
+        <script type="text/javascript">
+            function printWindow(){
+                window.print();
+            }
+        </script>
+    </section>
+    <section> 
+        <h1>Exercise 3.</h1>
+        <!--3. Write a JavaScript program to get the current date.  Go to the editor
+Expected Output :mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy-->
+        <div class="root3"></div>
+        <button onclick="showDate()">Show date</button>
+        <script type="text/javascript">
+            function showDate() {
+                document.querySelector(".root3").innerHTML = new Date().toLocaleDateString();
+            }
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 4.</h1>
+        <!--4. Write a JavaScript program to find the area of a triangle where lengths of the three of its sides are 5, 6, 7-->
+        <div class="root4"></div>
+        <button onclick="areaOfTriangle(13,16,23)">Find area of triangle</button>
+        <script type="text/javascript">
+            function areaOfTriangle(a,b,c){
+                let s = (a + b + c) / 2;
+                document.querySelector(".root4").innerHTML = Math.sqrt(s * (s - a) * (s - b) * (s - c))
+            }
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 5.</h1>
+        <!--5. Write a JavaScript program to rotate the string 'w3resource' in right direction by 
+            periodically removing one letter from the end of the string and attaching it to the front.-->
+        <div class="root5"> w3resource</div>
+        <button onclick="rotate('w3resource')">Rotate string</button>
+        <script type="text/javascript">
+            function rotate(str) {                             
+                    const root5 = document.querySelector(".root5");
+                    const textNode = root5.childNodes[0];
+                    let text = textNode.data;
+
+                    setInterval( printOnScreen , 300);
+                    function printOnScreen(){
+                        text = text[text.length-1] + text.slice(0, text.length-1);
+                        textNode.data = text;
+                }               
+            }
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 6.</h1>
+        <!--6. Write a JavaScript program to determine whether a given year is a leap year in the 
+            Gregorian calendar.-->
+        <div class="root6"></div>  
+        <button type="button" onclick="inputYear()">Is Leap Year</button>  
+        <script type="text/javascript">
+            function inputYear(){
+                let year = prompt("Please enter year." , "2021")     
+                if( year !== null){
+                    isLeapYear(year)
+                }
+               }               
+
+            function isLeapYear(year) {           
+                let answer = 
+                (year % 4 === 0)?
+                    (year % 400 === 0)? true: (year % 100 === 0)?false: true
+                    :false
+                document.querySelector('.root6').innerHTML = "Year " + year + " is leap year: " + answer 
+            }             
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 7.</h1>
+        <p>Show All 01.January is being a Sunday between 2014 and 2050</p>
+        <!--7. Write a JavaScript program to find 1st January is being a Sunday between 2014 and 2050. -->
+        <div class="root7"></div>
+        <button onclick="showSundays()">Show Sundays</button>
+        <script type="text/javascript">
+            function showSundays() {                
+                let arrayOfSundays = []
+                for(let i = 2014; i <= 2050; i++){
+                    let date = "01.01." + i;
+                    let d = new Date(date).getDay();
+                    if(d === 0){
+                        arrayOfSundays.push(date)
+                    }
+                }                
+                let root7 = document.querySelector(".root7");
+                 arrayOfSundays.map((element) =>{
+                    let p = document.createElement("p");
+                    p.innerHTML = element;
+                    root7.appendChild(p);
+                })
+            }
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 8.</h1>
+        <!--8. Write a JavaScript program where the program takes a random integer between 1 to 10, 
+            the user is then prompted to input a guess number. If the user input matches with guess number,
+             the program will display a message "Good Work" otherwise display a message "Not matched".-->
+        <div class = "root8"></div>
+        <button type="button" onclick="pickNumber()">Pick Number</button>
+        <script type="text/javascript">        
+                let root8 = document.querySelector('.root8');                
+            function pickNumber() {
+                root8.innerHTML = "";
+                let guess = Math.floor(Math.random()*10) + 1;
+                console.log(guess);
+                setTimeout(takeNumber ,1000)
+                function takeNumber(){
+                    let num = prompt("Please enter number between 1 and 10", "1")                
+                    if(num > 10 || num < 1 || (num % 1 !== 0)){
+                            root8.innerHTML = ""
+                            alert("Error. It is invalid number. Try again")
+                        }else{
+                            root8.innerHTML = (guess == num)? "Good Work!": "Not matched!"; 
+                    }
+                }              
+            }    
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 9.</h1>
+        <!--9. Write a JavaScript program to calculate days left until next Christmas.-->
+        <div class = "root9"></div>
+        <button type="button" onclick="calculateDays()">Calculate</button>
+        <script type="text/javascript">        
+                let root9 = document.querySelector('.root9');                
+            function calculateDays() {
+                const d = new Date(); 
+                let year =(d.getMonth() < 11)? d.getFullYear()
+                : (d.getDate() <= 25)? d.getFullYear() : (d.getFullYear() + 1)                 
+                let christmas = new Date("12.25." + year);
+                let daysToChristmas =Math.ceil((christmas.getTime() - d.getTime())/86400000)
+                root9.innerHTML = daysToChristmas + " days till Christmas "
+            }    
+        </script>
+    </section>
+    <section> 
+        <h1> Exercise 10.</h1>
+        <!-- Write a JavaScript program to calculate multiplication and division of two numbers 
+            (input from user). -->
+         <form action="#" onclick ="(event) => event.preventDefault()">
+             <fieldset>
+             <label for="first">1st Number : </label> 
+             <input type = "number" id = "first" onchange = "enterFirst(this.value)"/>
+             <br><br>
+             <label for="second">2nd Number: </label>
+             <input type = "number" id = "second" onchange = "enterSecond(this.value)"/>
+             <br><br>
+             <input type ="button" onclick="multiply()" value = "Multiply"/>
+             <input type = "button" onclick="divide()" value = "Divide"/>
+             <br><br>
+             <p>The result is: </p>
+             <p class = "root10">0</p>
+            </fieldset>
+         </form>   
+         <script type="text/javascript">
+         const root10 = document.querySelector(".root10");
+         /*function multiply(){
+            let first = document.querySelector('#first').value;
+            let second = document.querySelector('#second').value;
+                 root10.innerHTML = second *first           
+         }
+         function divide(){
+            let first = document.querySelector('#first').value;
+            let second = document.querySelector('#second').value;
+            root10.innerHTML = first/second
+         }*/
+         let first;
+         let second;
+         function enterFirst(val){
+             first = val
+         }
+          function enterSecond(val){
+             second = val
+         }
+         function multiply(){
+                 root10.innerHTML = second *first           
+         }
+         function divide(){
+            root10.innerHTML = first/second
+         }
+        </script>
+    </section>
+</body>
+</html>
