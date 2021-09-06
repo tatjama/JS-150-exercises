@@ -313,7 +313,7 @@ Expected Output :mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy-->
         <script type="text/javascript">
         function removeCharacter(string, index){
             
-            document.querySelector(".root22").innerHTML = string.slice(0,index) + string.slice(index+1)
+            document.querySelector(".root22").innerHTML = string.slice(0,index-1) + string.slice(index)
         }
         removeCharacter("karakter", 3)
         </script>
@@ -329,6 +329,32 @@ Expected Output :mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy-->
             = string[string.length - 1]  + string.slice(1, string.length - 1)+ string[0]
         }
         changeString("karakter")//raraktek
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 27.</h1>
+        <!--27. Write a JavaScript program to check whether a string starts with 'Java' and false otherwise.-->
+        <p>Does string starts with 'Java': <span class = "root27"></span></p>
+        <script type="text/javascript">
+        function testStart(string) {
+               document.querySelector(".root27").innerHTML = string.startsWith("Java")
+        }
+        testStart("avaScript")
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 30.</h1>
+        <!--30. Write a JavaScript program to check whether a string "Script" presents at 5th 
+            (index 4) position in a given string, if "Script" presents in the string return the 
+            string without "Script" otherwise return the original one.  Go to the editor-->
+         <h1 class = "root30"></h1>
+        <script type="text/javascript">
+        function checkScript(string) {
+            let indexOfScript = string.indexOf("Script");
+            document.querySelector(".root30").innerHTML 
+            = (indexOfScript === 4)? string.slice(0, 4) + string.slice(10): string
+        }
+        checkScript("JavaScriptasica")
         </script>
     </section>
     <section>
