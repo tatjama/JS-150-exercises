@@ -228,5 +228,116 @@ Expected Output :mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy-->
          }
         </script>
     </section>
+    <section> 
+        <h1> Exercise 11.</h1>
+        <!--11. Write a JavaScript program to convert temperatures to and from Celsius, Fahrenheit.
+              Go to the editor Formula : c/5 = (f-32)/9 [ where c = temperature in Celsius and 
+              f = temperature in Fahrenheit ]
+            Expected Output :
+            60°C is 140 °F
+            45°F is 7.222222222222222°C-->
+            <input type="number" id = "temp" />
+            <input type = "button" onclick = "toCelsius()" value = "to C"/>            
+            <input type = "button" onclick = "toFahrenheit()" value = "to F"/>
+            <h1 class = "root11"></h1>
+            <script type="text/javascript">
+                function toCelsius(){
+                    let temp = document.getElementById("temp").value;
+                    document.querySelector(".root11").innerHTML 
+                    = temp + " Fahrenheit is " + ((5*(temp - 32))/9) + " C "
+                }
+                function toFahrenheit(){
+                    let temp = document.getElementById("temp").value;
+                    document.querySelector(".root11").innerHTML 
+                    =temp + " Celsius is " + ((9 * (temp /5))+32) + " F "
+                }
+            </script>
+    </section>
+    <section>
+        <h1> Exercise 12.</h1>
+        <!--12. Write a JavaScript program to get the website URL (loading page).-->
+        <p>Web site URL: <span class = "root12"></span></p>
+        <script type="text/javascript">
+        document.querySelector(".root12").innerHTML = document.URL
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 13.</h1>
+        <!--13. Write a JavaScript exercise to create a variable using a user-defined name. .-->
+        <h2 class = "root13" ></h2>
+        <script type="text/javascript">
+        const var_name = 'abcd';
+        const n = 120;
+        this[var_name] = n;
+         document.querySelector(".root13").innerHTML = (this[var_name])
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 14.</h1>
+        <!--14. Write a JavaScript exercise to get the extension of a filename. -->
+        <p>File extension is: <span class = "root14"></span></p>
+        <script type="text/javascript">
+        let filename = "system.php";
+        document.querySelector(".root14").innerHTML = filename.split(".").pop();
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 15.</h1>
+        <!--15. Write a JavaScript program to get the difference between a given number and 13, 
+            if the number is greater than 13 return double the absolute difference. -->
+        <p>Difference is: <span class = "root15"></span></p>
+        <script type="text/javascript">
+        function difference(numb){        
+        document.querySelector(".root15").innerHTML = (numb <= 13)? (numb - 13): 2 * (numb - 13)
+        }
+        difference(12)
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 16.</h1>
+        <!--16. Write a JavaScript program to compute the sum of the two given integers.
+             If the two values are same, then returns triple their sum..-->
+        <p>Result: <span class = "root16"></span></p>
+        <script type="text/javascript">
+        function sum(a, b) {
+            document.querySelector(".root16").innerHTML = (a === b) ? 3 * (a + b): (a + b)
+        }
+        sum(3,2)
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 22.</h1>
+        <!--22. Write a JavaScript program to remove a character at the specified position
+             of a given string and return the new string.-->
+        <p> <span class = "root22"></span></p>
+        <script type="text/javascript">
+        function removeCharacter(string, index){
+            
+            document.querySelector(".root22").innerHTML = string.slice(0,index) + string.slice(index+1)
+        }
+        removeCharacter("karakter", 3)
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 23.</h1>
+        <!--23. Write a JavaScript program to create a new string from a given string changing the position 
+            of first and last characters. The string length must be greater than or equal to 1.-->
+        <p>Reasult: <span class = "root23"></span></p>
+        <script type="text/javascript">
+        function changeString(string){
+            document.querySelector(".root23").innerHTML 
+            = string[string.length - 1]  + string.slice(1, string.length - 1)+ string[0]
+        }
+        changeString("karakter")//raraktek
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 17.</h1>
+        <!--12. Write a JavaScript program to get the website URL (loading page).-->
+        <p>Web site URL: <span class = "root17"></span></p>
+        <script type="text/javascript">
+        document.querySelector(".root17").innerHTML = document.URL
+        </script>
+    </section>
 </body>
 </html>
