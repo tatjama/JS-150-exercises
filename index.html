@@ -354,7 +354,92 @@ Expected Output :mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy-->
             document.querySelector(".root30").innerHTML 
             = (indexOfScript === 4)? string.slice(0, 4) + string.slice(10): string
         }
-        checkScript("JavaScriptasica")
+        checkScript("JavaScriptasica")//javaasica
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 43.</h1>
+        <!--43. Write a JavaScript program to check from three given numbers (non negative integers)
+             that two or all of them have the same rightmost digit. -->
+        <p>Does at least two last digit are the same: <span class = "root43"></span></p>
+        <script type="text/javascript">
+        function checkLastDigit(arrOfNumbers) {
+            let arrOfDigits = [];
+            for(let i = 0; i < arrOfNumbers.length; i++) {
+              let lastDigit =  arrOfNumbers[i]%10;
+              arrOfDigits.push(lastDigit)
+            }
+            let result = (arrOfDigits.length !== new Set(arrOfDigits).size)
+            document.querySelector(".root43").innerHTML = result
+        }
+        checkLastDigit([12, 24, 33])
+        
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 48.</h1>
+        <!--48. Write a JavaScript program to reverse a given string.-->
+        <p>Reverse string:  <span class = "root48"></span></p>
+        <script type="text/javascript">
+        let str = "system";
+        document.querySelector(".root48").innerHTML = str.split('').reverse().join(''); 
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 49.</h1>
+        <!--49. Write a JavaScript program to replace every character in a given string
+             with the character following it in the alphabet. .-->
+        <p>Replace with the following characters: <span class = "root49"></span></p>
+        <script type="text/javascript">
+        function replaceCharacter(str){
+            let result = "";
+            for(let i = 0; i < str.length; i++){
+               let code = ( str.charCodeAt(i))
+               console.log(code);
+               if(code === 122){
+                   result += String.fromCharCode(97);
+               }else if(code === 90){
+                   result += String.fromCharCode(65)
+               }
+               else{
+                  result += String.fromCharCode(code + 1) 
+                }
+            }
+            return result
+        }
+        document.querySelector(".root49").innerHTML = replaceCharacter("Z")
+        
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 56.</h1>
+        <!--56. Write a JavaScript program to divide two positive numbers
+             and return a string with properly formatted commas. -->
+        <p>Result: <span class = "root56"></span></p>
+        <script type="text/javascript">
+        function formatDivided(a, b){
+            let div = (a/b).toString().split('.');
+            let rest = '';
+            let first = '';
+            if(div[0].length > 3){;
+               let firstString = div[0];
+               while(firstString.length > 3){
+                first = firstString.slice(firstString.length - 3 ) + "." + first;
+                firstString = firstString.slice(0, firstString.length - 3)
+               }
+               first = firstString + "." + first;
+
+            }else{
+                first = div[0]
+            }
+
+            (div[1].length <= 2)? rest = div[1]
+                : rest = (div[1][2] < 5)? div[1].slice(0,2): div[1][0] + (parseInt(div[1][1])  + 1).toString()
+            
+            return first + "," + rest;
+        }
+        
+        document.querySelector(".root56").innerHTML = formatDivided(800000.5,6);
         </script>
     </section>
     <section>
