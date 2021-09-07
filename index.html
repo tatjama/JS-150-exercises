@@ -395,7 +395,6 @@ Expected Output :mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy-->
             let result = "";
             for(let i = 0; i < str.length; i++){
                let code = ( str.charCodeAt(i))
-               console.log(code);
                if(code === 122){
                    result += String.fromCharCode(97);
                }else if(code === 90){
@@ -443,11 +442,136 @@ Expected Output :mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy-->
         </script>
     </section>
     <section>
-        <h1> Exercise 17.</h1>
-        <!--12. Write a JavaScript program to get the website URL (loading page).-->
-        <p>Web site URL: <span class = "root17"></span></p>
+        <h1> Exercise 74.</h1>
+        <!--74. Write a JavaScript program to find the larger value between the first 
+            or last and set all the other elements with that value. Display the new array. .-->
+        <p>New array: <span class = "root74"></span></p>
         <script type="text/javascript">
-        document.querySelector(".root17").innerHTML = document.URL
+        function fillWithLargerElementValue(arr){
+            let max =(arr[0] > arr[arr.length - 1])? arr[0]: arr[arr.length - 1]
+               arr.fill(max)
+               return arr;
+        }
+        document.querySelector(".root74").innerHTML = fillWithLargerElementValue([2, 3, 6, 1, 8])
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 80.</h1>
+        <!--80. Write a JavaScript program to swap the first and last elements of a given array 
+            of integers. The array length should be at least 1.-->
+        <p>Swapped array: <span class = "root80"></span></p>
+        <script type="text/javascript">
+        function swap(arr){
+            [arr[0], arr[arr.length - 1] ] = [ arr[arr.length - 1], arr[0] ]
+            return arr;
+        }
+        document.querySelector(".root80").innerHTML = swap([1, 2, 3, 4])
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 87.</h1>
+        <!--87. Write a JavaScript program to check whether two arrays of integers of same 
+            length are similar or not. The arrays will be similar if one array can be obtained
+             from another array by swapping at most one pair of elements.-->
+        <p>Are they similar? : <span class = "root87"></span></p>
+        <script type="text/javascript">
+        function checkSimilarityOfArrays(arr1, arr2){
+            for(let i = 0; i < arr1.length; i++){
+                if(arr1[i] != arr2[i]){
+                    let indexOfDiffElement = arr2.indexOf(arr1[i])
+                    if(indexOfDiffElement == -1){
+                        return false
+                    }else{
+                        [arr2[indexOfDiffElement], arr2[i]] = [arr2[i], arr2[indexOfDiffElement]];
+                    }
+                    for(let j = 0; j < arr2.length; j++){
+                       return (arr1[j] != arr2[j])? false: true                        
+                    }
+                }
+            }
+            return true;
+        }
+        document.querySelector(".root87").innerHTML 
+        = checkSimilarityOfArrays([1, 2, 3, 4, 5, 6] , [1, 3, 4, 5, 6, 2])
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 89.</h1>
+        <!--89. Write a JavaScript program to check whether it is possible to replace $ in a given 
+            expression x $ y = z with one of the four signs +, -, * or / to obtain a correct expression. 
+             Go to the editor For example x = 10, y = 30 and z = 300, we can replace $ with a multiple 
+             operator operator (*) to obtain x * y = z-->
+        <p>Replace $ with : <span class = "root89"></span></p>
+        <script type="text/javascript">
+        function findOperator(a, b, z){
+            let result = ""
+            switch(z){
+                case a + b: result =  "+"; break;
+                case a - b: result =  "-"; break;
+                case a * b: result =  "*"; break;
+                case a / b: result =  "/"; break;
+                default: result =  "Can not replace"; break;
+            }
+            return result;
+        }
+        document.querySelector(".root89").innerHTML = findOperator(3, 10, 3)
+        </script>
+    </section>    
+    <section>
+        <h1> Exercise 94.</h1>
+        <!--94. Write a JavaScript program to find the number which appears most in a given array of integers.-->
+        <p>Number : <span class = "root94"></span> </p>
+        <script type="text/javascript">
+        function maxAppear(arr){
+            let resultArray = Array(Math.max(...arr) + 1).fill(0);
+            for(let i = 0; i < arr.length; i++){
+                resultArray[arr[i] - 1]++
+            }
+            return resultArray.indexOf(Math.max(...resultArray))+1 + " is appears " + Math.max(...resultArray) +  " times."
+        }
+        document.querySelector(".root94").innerHTML = maxAppear([1, 2, 4, 7,4 , 4, 5, 3, 10, 3])
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 97.</h1>
+        <!--97. Write a JavaScript program to find the shortest possible string which can create 
+            a string to   make it a palindrome by adding characters to the end of it.-->
+        <p>Palindrome : <span class = "root97"></span></p>
+        <script type="text/javascript">
+        function findStringToPalindrome(str){
+            let result = ""
+            let word = str;
+            let ind = 1;
+            if(str.length  == 1 || str === str.split("").reverse().join("")) return str;            
+            while(word.length > 0){
+                let rest = word.slice(ind);
+                if(rest == rest.split('').reverse().join('')){
+                    break;
+                }
+                ind++
+            }
+            return str + str.slice(0,  ind).split('').reverse().join('');            
+        }
+        document.querySelector(".root97").innerHTML = findStringToPalindrome("aba")
+        </script>
+    </section>
+    <section>
+        <h1> Exercise 100.</h1>
+        <!--100. Write a JavaScript program to check whether there is at least 
+            one element which occurs in two given sorted arrays of integers.-->
+        <p>Element : <span class = "root100"></span></p>
+        <script type="text/javascript">
+        function equalElement(arr1, arr2){
+            for(let i = 0; i < arr1.length; i++){
+                for(let j = 0; j < arr2.length; j++){
+                    if(arr1[i] === arr2[j]){
+                        return [arr1[i]]
+                    }
+                }
+            }            
+            return "There is not such element";
+        }
+        document.querySelector(".root100").innerHTML = equalElement([1, 2, 4, 3,5] , [14, 15, 13, 10, 23])
         </script>
     </section>
 </body>
